@@ -1,0 +1,270 @@
+/* ==========================================================
+   BASICS
+   ========================================================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #2c3e50;
+  margin: 0;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+header h1 {
+  margin: 0 0 8px;
+}
+
+header p {
+  margin: 0;
+  color: #6b7280;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ==========================================================
+   FILTER BUTTONS (Flexbox)
+   The radio inputs are hidden but still keyboard accessible.
+   The labels are styled to look like buttons.
+   ========================================================== */
+.filter-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.filter-btn {
+  padding: 10px 24px;
+  border: 2px solid #3498db;
+  border-radius: 25px;
+  background-color: white;
+  color: #3498db;
+  font-size: 15px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    transform 0.3s;
+}
+
+.filter-btn:hover {
+  background-color: #eaf4fc;
+  transform: translateY(-2px);
+}
+
+/* ACTIVE STATE: the label whose radio is checked turns solid blue */
+#f-all:checked ~ .filters label[for="f-all"],
+#f-landscapes:checked ~ .filters label[for="f-landscapes"],
+#f-portraits:checked ~ .filters label[for="f-portraits"],
+#f-architecture:checked ~ .filters label[for="f-architecture"] {
+  background-color: #3498db;
+  color: white;
+}
+
+/* Keyboard focus ring (use Tab / arrow keys to try it) */
+#f-all:focus-visible ~ .filters label[for="f-all"],
+#f-landscapes:focus-visible ~ .filters label[for="f-landscapes"],
+#f-portraits:focus-visible ~ .filters label[for="f-portraits"],
+#f-architecture:focus-visible ~ .filters label[for="f-architecture"] {
+  outline: 3px solid #f39c12;
+  outline-offset: 2px;
+}
+
+/* ==========================================================
+   GALLERY LAYOUT (Grid) - 4 columns on desktop
+   ========================================================== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* One accent colour per category, defined once and reused by the tags */
+.landscapes {
+  --accent: #2e7d32;
+}
+.portraits {
+  --accent: #8e44ad;
+}
+.architecture {
+  --accent: #34495e;
+}
+
+/* ==========================================================
+   CARDS (Grid inside each card)
+   Row 1 = image area, Row 2 = title and tag
+   ========================================================== */
+.card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  /* Smooth animations for hover AND for filtering.
+       "display" is listed so the card can fade out before it
+       leaves the layout (needs a recent browser; older ones
+       simply hide the card instantly). */
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease,
+    box-shadow 0.3s ease,
+    display 0.4s;
+  transition-behavior: allow-discrete;
+}
+
+/* Starting look when a card (re)appears: it fades and grows in */
+@starting-style {
+  .card {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+}
+
+/* HOVER EFFECT: card lifts up with a bigger shadow */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================
+   FILTERING: hide every card that is NOT in the chosen category
+   ========================================================== */
+#f-landscapes:checked ~ .gallery .card:not(.landscapes),
+#f-portraits:checked ~ .gallery .card:not(.portraits),
+#f-architecture:checked ~ .gallery .card:not(.architecture) {
+  display: none;
+  opacity: 0;
+  transform: scale(0.85);
+}
+
+/* ==========================================================
+   IMAGE + OVERLAY
+   Image and overlay share the same grid cell (grid-area: 1 / 1),
+   so the overlay sits on top of the image without absolute positioning.
+   ========================================================== */
+.card-image {
+  display: grid;
+  overflow: hidden;
+}
+
+.card-image img,
+.overlay {
+  grid-area: 1 / 1;
+}
+
+.card-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card:hover img {
+  transform: scale(1.08);
+}
+
+.overlay {
+  display: grid;
+  align-content: end;
+  padding: 16px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.1));
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.overlay p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.card:hover .overlay {
+  opacity: 1;
+}
+
+/* ==========================================================
+   TITLE AND CATEGORY TAG (Grid)
+   ========================================================== */
+.card-info {
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+  padding: 14px 16px 16px;
+}
+
+.card-info h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.tag {
+  background-color: var(--accent);
+  color: white;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================================
+   RESPONSIVE DESIGN (keep these at the bottom)
+   ========================================================== */
+
+/* Tablet: 2 columns */
+@media (max-width: 900px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: 1 column */
+@media (max-width: 560px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Touch screens have no hover, so always show the description */
+@media (hover: none) {
+  .overlay {
+    opacity: 1;
+  }
+}
+
+/* Respect people who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card-image img,
+  .overlay,
+  .filter-btn {
+    transition: none;
+  }
+}

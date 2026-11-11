@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Gallery</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Image Gallery</h1>
+      <p>Choose a category to filter the pictures.</p>
+    </header>
+
+    <main>
+      <!-- FILTER CONTROLS -->
+      <input
+        type="radio"
+        name="filter"
+        id="f-all"
+        class="filter-input"
+        checked
+      />
+      <input
+        type="radio"
+        name="filter"
+        id="f-landscapes"
+        class="filter-input"
+      />
+      <input type="radio" name="filter" id="f-portraits" class="filter-input" />
+      <input
+        type="radio"
+        name="filter"
+        id="f-architecture"
+        class="filter-input"
+      />
+
+      <!-- The labels act as the visible filter buttons -->
+      <div class="filters" role="group" aria-label="Filter gallery">
+        <label for="f-all" class="filter-btn">All</label>
+        <label for="f-landscapes" class="filter-btn">Landscapes</label>
+        <label for="f-portraits" class="filter-btn">Portraits</label>
+        <label for="f-architecture" class="filter-btn">Architecture</label>
+      </div>
+
+      <!-- IMAGE GRID: 12 cards -->
+      <div class="gallery">
+        <!-- Card 1 -->
+        <article class="card landscapes">
+          <div class="card-image">
+            <img
+              src="https://media.istockphoto.com/id/2005352945/photo/loch-shiel-with-mist-during-sunrise-in-wintertime.jpg?s=612x612&w=0&k=20&c=6gOGNDziSCH67wEcTILRrOFNEIcClXP1SnRtJ3iJg6s="
+              alt="Mountain lake at sunrise"
+            />
+            <div class="overlay">
+              <p>Still water reflects snow-capped peaks at sunrise.</p>
+            </div>
+          </div>
+          <div class="card-info">
+            <h2>Mountain Lake</h2>
+            <span class="tag">Landscapes</span>
+          </div>
+        </article>
+ 
+        <!-- Card 2 -->
+        <article class="card portraits">
+          <div class="card-image">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdHiVTbJUDLmdSW4najOKTELHKfn_7MpADvuu3XuLnXSStq8o9s7fYgIls&s=10" alt="Candid street portrait"/>
+            <div class="overlay">
+              <p>
+                A candid moment captured in the warm light of late afternoon.
+              </p>
+            </div>
+          </div>
+          <div class="card-info">
+            <h2>Street Portrait</h2>
+            <span class="tag">Portraits</span>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="card architecture">
+          <div class="card-image">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_UGjTw-tGMOs1u0Lj5YWfqqC3974qRgs_gqO7lEls3A&s=10" alt="Glass skyscraper"/>
+            <div class="overlay">
+              <p>Steel and glass rise high above the city skyline.</p>
+            </div>
+          </div>
+          <div class="card-info">
+            <h2>Glass Skyscraper</h2>
+            <span class="tag">Architecture</span>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="card landscapes">
+          <div class="card-image">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlgHeBhaAPL0tfp_g-lR5bBc6e9ZvlsNzSDdst76CDUg&s=10" alt="Desert sand dunes"/>
+            <div class="overlay">
+              <p>Wind-carved sand dunes stretch all the way to the horizon.</p>
+            </div>
+          </div>
+          <div class="card-info">
+            <h2>Desert Dunes</h2>
+            <span class="tag">Landscapes</span>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="card portraits">
+          <div class="card-image">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIHNCV8Hj7Q4oVPvGTgXBc9-Ukt70vOR3iN9NwgOppng&s=10" alt="Elderly fisherman by the sea"/>
+            <div class="overlay">
+              <p>Weathered hands and a lifetime of stories by the sea.</p>
+            </div>
+          </div>
+          <div class="card-info">
+            <h2>Old Fisherman</h2>
+            <span class="tag">Portraits</span>
+          </div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="card architecture">
+          <div class="card-image">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyPALuTBgjozcP9ossagKQM6smO5hMnji8DYLBgvZ4IXlVckq1XMuhBK8&s=10" alt="The greatest of all times"/>
+            <div class="overlay">
+              <p>It just had to be him end of an era.</p>
+            </div>
+          </div>
+          <div class="card-info">
+            <h2>The GOAT</h2>
+            <span class="tag">Architecture</span>
+          </div>
+        </article>
+
+        <!-- Card 7 -->
+        <article class="card landscapes">
+          <div class="card-image">
+            <img src="https://media.licdn.com/dms/image/v2/C561BAQETDSJRpjjfsA/company-background_10000/company-background_10000/0/1584694940581/lifechoices_coding_academy_cover?e=2147483647&v=beta&t=MOJysrY2vPvKZ2HuK1fEYqIhkjRUDVJMa6Uu1fAQNOA" alt="Life choices Academy"/>
+            <div class="overlay">
+              <p>Youth learning program.</p>
+            </div>
+          </div>
+          <div class="card-info">
+            <h2>Life Choices Academy</h2>
+            <span class="tag">Landscapes</span>
+          </div>
+        </article>
+
+        <!-- Card 8 -->
+        <article class="card portraits">
+          <div class="card-image">
+            <img src="https://cdn.dailymaverick.co.za/i/5IDdJQbO_lYoRZdoItH5i2-dFvY=/1200x0/smart/filters:strip_exif()/file/dailymaverick/wp-content/uploads/2025/08/Siya-Kolisi-try.jpg" alt="Siya Kolis"/>
+            <div class="overlay">
+              <p>Pure joy, world cup winner.</p>
+            </div>
+          </div>
+          <div class="card-info">
+            <h2>Siya kolisi try</h2>
+            <span class="tag">Portraits</span>
+          </div>
+        </article>
+
+        <!-- Card 9 -->
+        <article class="card architecture">
+          <div class="card-image">
+            <img src="https://www.iamfy.co/cdn/shop/files/m_2Fx1000_2F847275c6-1b9d-4da2-bb66-978bcd1bd028.jpg?crop=center&height=1000&v=1760673438&width=750&quality=60" alt="Lewis Hamilton"/>
+            <div class="overlay">
+              <p>B class driver in a fastest car.</p>
+            </div>
+          </div>
+          <div class="card-info">
+            <h2>Fastest Driver</h2>
+            <span class="tag">Architecture</span>
+          </div>
+        </article>
+
+        <!-- Card 10 -->
+        <article class="card landscapes">
+          <div class="card-image">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJxfn2ZyWg5T5D7AamcGT5g5ItBuTT1bBkyvArU-2hf12Kyozh_KiOWu4z&s=10" alt="Raymond"/>
+            <div class="overlay">
+              <p>Surrounded by police in police station</p>
+            </div>
+          </div>
+          <div class="card-info">
+            <h2>Raymond</h2>
+            <span class="tag">Landscapes</span>
+          </div>
+        </article>
+
+        <!-- Card 11 -->
+        <article class="card portraits">
+          <div class="card-image">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXRGqMHblTaHDeILZvflvPq7M5dIr9CO9ox6uohDDR9wQ00Njs3iiZbLNZ&s=10" alt="Studio portrait"/>
+            <div class="overlay">
+              <p>Soft studio lighting highlights every expression.</p>
+            </div>
+          </div>
+          <div class="card-info">
+            <h2>Studio Portrait</h2>
+            <span class="tag">Portraits</span>
+          </div>
+        </article>
+
+        <!-- Card 12 -->
+        <article class="card architecture">
+          <div class="card-image">
+            <img src="https://www.thesaunter.co.za/wp-content/uploads/2019/09/Hawaan-Forest-5.jpg" alt="Hawaan Forest"/>
+            <div class="overlay">
+              <p>Dead leaves and the dirty ground.</p>
+            </div>
+          </div>
+          <div class="card-info">
+            <h2>Hawaana Forest</h2>
+            <span class="tag">Architecture</span>
+          </div>
+        </article>
+      </div>
+    </main>
+  </body>
+</html>
